@@ -19,11 +19,13 @@ struct SpriteInfo {
 
 class TextureAtlas {
   public:
-    TextureAtlas(const std::string &json_path, const std::string &image_path);
+    TextureAtlas(const std::string &json_path, const std::string &image_path, bool flip_texture,
+                 bool top_left_coords = false);
     void load_atlas(const std::string &json_path, const std::string &image_path);
     std::vector<glm::vec2> get_texture_coordinates_of_sub_texture(const std::string &sprite_name) const;
     unsigned int get_texture_name() const;
     void bind_texture() const;
+    bool using_top_left_coords;
 
   private:
     std::vector<glm::vec2> compute_uv_coordinates(const SpriteInfo &sprite) const;

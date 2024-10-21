@@ -8,7 +8,9 @@
 // Alias for JSON
 using json = nlohmann::json;
 
-TextureAtlas::TextureAtlas(const std::string &json_path, const std::string &image_path) {
+TextureAtlas::TextureAtlas(const std::string &json_path, const std::string &image_path, bool flip_texture,
+                           bool top_left_coords) {
+    using_top_left_coords = top_left_coords;
     stbi_set_flip_vertically_on_load(1);
     load_atlas(json_path, image_path);
 }
@@ -27,7 +29,7 @@ void TextureAtlas::load_atlas(const std::string &json_path, const std::string &i
         float height = value["height"];
 
         info.top_left = glm::vec2(x, y);
-        info.bottom_right = glm::vec2(x + width, y + height);
+        info.bottom_right = glm::vec2(x + width, y + (using_top_left_coords ? -1 : 1) * height);
 
         sprite_map[key] = info;
     }
