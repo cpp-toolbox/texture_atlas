@@ -1,5 +1,4 @@
 #include "texture_atlas.hpp"
-#define STB_IMAGE_IMPLEMENTATION // Define this in exactly one source file
 #include <stb_image.h>
 #include <fstream>
 #include <iostream>
