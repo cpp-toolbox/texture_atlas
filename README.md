@@ -1,5 +1,5 @@
 # texture_atlas
-A system which makes working with texture atlases easier, this is designed for when you want to manually load in specific textures by hand, rather than working with meshes
+A system which makes working with texture atlases easier, this is designed for when you want to manually load in specific textures by hand, rather than working with meshes that already has its textures defined during the modelling process.
 
 To use this system for every texture atlas you must have an accompanying json file of this form: 
 ```json
@@ -10,6 +10,8 @@ To use this system for every texture atlas you must have an accompanying json fi
   }
 }
 ```
+
+the above json file specifies the top left corner of each sub-texture with the specified width and height.
 
 # warning
 Also be sure to include this in exactly one other source file or else it will not work
