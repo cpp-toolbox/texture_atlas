@@ -1,4 +1,5 @@
 # texture_atlas
+
 A system which makes working with texture atlases easier, this is designed for when you want to manually load in specific textures by hand, rather than working with meshes that already has its textures defined during the modelling process.
 
 To use this system for every texture atlas you must have an accompanying json file of this form: 
@@ -11,7 +12,7 @@ To use this system for every texture atlas you must have an accompanying json fi
 }
 ```
 
-the above json file specifies the top left corner of each sub-texture with the specified width and height.
+the above json file specifies the top left corner of each sub-texture with the specified width and height. Note that measurements are done from the top left corner of the image which is the canonical measurement for images.
 
 # warning
 Also be sure to include this in exactly one other source file or else it will not work
@@ -19,3 +20,5 @@ Also be sure to include this in exactly one other source file or else it will no
 ```cpp
 #define STB_IMAGE_IMPLEMENTATION 
 ```
+
+Also note that you must have an active opengl context before creating this class.
