@@ -70,7 +70,6 @@ std::vector<glm::vec2> TextureAtlas::compute_uv_coordinates(const SpriteInfo &sp
     float u_max = sprite.bottom_right.x / atlas_width;
     float v_max = sprite.bottom_right.y / atlas_height;
 
-    // Return UV coordinates
     return {
         {u_max, v_min}, // top-right
         {u_max, v_max}, // bottom-right
@@ -80,22 +79,13 @@ std::vector<glm::vec2> TextureAtlas::compute_uv_coordinates(const SpriteInfo &sp
 }
 
 std::vector<glm::vec2> TextureAtlas::get_texture_coordinates_of_sub_texture(const std::string &sprite_name) const {
-    const SpriteInfo &sprite = sprite_map.at(sprite_name);
-    auto temp = compute_uv_coordinates(sprite);
-
-    // Log the sprite name and UV coordinates
-    std::cout << "Sprite Name: " << sprite_name << "\n";
-    for (size_t i = 0; i < temp.size(); ++i) {
-        std::cout << "UV[" << i << "]: (" << temp[i].x << ", " << temp[i].y << ")\n";
+    try {
+        const SpriteInfo &sprite = sprite_map.at(sprite_name);
+        return compute_uv_coordinates(sprite);
+    } catch (const std::out_of_range &e) {
+        std::cerr << "Error: Sprite '" << sprite_name << "' not found in sprite_map." << std::endl;
+        throw; // Rethrow the exception to preserve the original behavior.
     }
-
-    return temp;
-
-    /*RenderData data;*/
-    /*data.uv_coords = compute_uv_coordinates(sprite);*/
-    /*data.texture_name = texture; // Using single texture unit for now*/
-    /**/
-    /*return data;*/
 }
 
 void TextureAtlas::bind_texture() const { glBindTexture(GL_TEXTURE_2D, texture); }

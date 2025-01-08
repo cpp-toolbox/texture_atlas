@@ -1,6 +1,7 @@
 #ifndef TEXTURE_ATLAS_HPP
 #define TEXTURE_ATLAS_HPP
 
+#define STB_IMAGE_IMPLEMENTATION
 #include <string>
 #include <map>
 #include <vector>
@@ -19,8 +20,8 @@ struct SpriteInfo {
 
 class TextureAtlas {
   public:
-    TextureAtlas(const std::string &json_path, const std::string &image_path, bool flip_texture,
-                 bool top_left_coords = false);
+    TextureAtlas(const std::string &json_path, const std::string &image_path, bool flip_texture = false,
+                 bool top_left_coords = true);
     void load_atlas(const std::string &json_path, const std::string &image_path);
     std::vector<glm::vec2> get_texture_coordinates_of_sub_texture(const std::string &sprite_name) const;
     unsigned int get_texture_name() const;
