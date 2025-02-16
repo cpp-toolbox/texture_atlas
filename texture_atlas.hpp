@@ -1,7 +1,6 @@
 #ifndef TEXTURE_ATLAS_HPP
 #define TEXTURE_ATLAS_HPP
 
-#define STB_IMAGE_IMPLEMENTATION
 #include <string>
 #include <map>
 #include <vector>
