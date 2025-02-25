@@ -52,6 +52,8 @@ void TextureAtlas::load_texture(const std::string &image_path) {
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
 
+    // NOTE: this works because by default this image will get bound to texture unit 0 which is probably going to be the
+    // default value of the sampler in the shader, bad but works for now
     int nrChannels;
     unsigned char *data = stbi_load(image_path.c_str(), &atlas_width, &atlas_height, &nrChannels, 0);
     if (data) {
@@ -88,4 +90,4 @@ std::vector<glm::vec2> TextureAtlas::get_texture_coordinates_of_sub_texture(cons
     }
 }
 
-void TextureAtlas::bind_texture() const { glBindTexture(GL_TEXTURE_2D, texture); }
+void TextureAtlas::bind_texture_to_active_texture_unit() const { glBindTexture(GL_TEXTURE_2D, texture); }

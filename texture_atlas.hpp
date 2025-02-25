@@ -24,7 +24,7 @@ class TextureAtlas {
     void load_atlas(const std::string &json_path, const std::string &image_path);
     std::vector<glm::vec2> get_texture_coordinates_of_sub_texture(const std::string &sprite_name) const;
     unsigned int get_texture_name() const;
-    void bind_texture() const;
+    void bind_texture_to_active_texture_unit() const;
     bool using_top_left_coords;
 
   private:
