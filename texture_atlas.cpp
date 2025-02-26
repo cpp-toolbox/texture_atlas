@@ -86,7 +86,7 @@ std::vector<glm::vec2> TextureAtlas::get_texture_coordinates_of_sub_texture(cons
         return compute_uv_coordinates(sprite);
     } catch (const std::out_of_range &e) {
         std::cerr << "Error: Sprite '" << sprite_name << "' not found in sprite_map." << std::endl;
-        throw; // Rethrow the exception to preserve the original behavior.
+        throw; // rethrow the exception to preserve the original behavior.
     }
 }
 
