@@ -19,6 +19,7 @@ struct SpriteInfo {
 
 class TextureAtlas {
   public:
+    TextureAtlas() {};
     TextureAtlas(const std::string &json_path, const std::string &image_path, bool flip_texture = false,
                  bool top_left_coords = true);
     void load_atlas(const std::string &json_path, const std::string &image_path);
